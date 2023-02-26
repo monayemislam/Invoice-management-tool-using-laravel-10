@@ -46,7 +46,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function roles()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class, 'role_user');
     }
 
     /**
@@ -98,5 +98,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function hasAnyRole()
     {
         return !!$this->roles->count();
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function recurringInvoices()
+    {
+        return $this->hasMany(RecurringInvoice::class);
     }
 }
