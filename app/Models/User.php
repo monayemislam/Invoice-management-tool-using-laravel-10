@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements MustVerifyEmail,JWTSubject
+class User extends Authenticatable implements MustVerifyEmail, JWTSubject
 {
     use HasFactory, Notifiable;
 
@@ -110,7 +110,7 @@ class User extends Authenticatable implements MustVerifyEmail,JWTSubject
     {
         return $this->hasMany(RecurringInvoice::class);
     }
-    
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
